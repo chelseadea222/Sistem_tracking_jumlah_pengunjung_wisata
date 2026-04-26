@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
     "functions": {
         "api/*.php": {
@@ -15,3 +16,22 @@
         }
     ]
 }
+=======
+{
+    "functions": {
+        "api/*.php": {
+            "runtime": "vercel-php@0.7.1"
+        }
+    },
+    "routes": [
+        {
+            "src": "/api/(.*).php",
+            "dest": "/api/index.php"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "/api/$1"
+        }
+    ]
+}
+>>>>>>> aac3205f2d5243290c2a81b58cb995c4d55a0b9e
