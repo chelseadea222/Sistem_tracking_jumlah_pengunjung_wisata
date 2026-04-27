@@ -4,8 +4,8 @@
             font-family: 'Lato', sans-serif;
             min-height: 100vh;
             display: flex;
+            justify-content: center;   /* horizontal tengah */
             align-items: center;
-            justify-content: center;
             background: url('https://i.pinimg.com/736x/d5/fa/66/d5fa660d2e02cb8b5f2c3e1489919426.jpg') center/cover fixed;
         }
         body::before {
