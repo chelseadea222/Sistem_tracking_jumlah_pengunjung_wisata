@@ -1,20 +1,30 @@
 <?php
-// Simpan file ini di: D:\XAMPP\htdocs\Pemweb\bromo\config\koneksi.php
+// Data dari TiDB Cloud
+$host = 'gateway01.ap-southeast-1.prod.alicloud.tidbcloud.com';
+$port = 4000;
+$user = 'rYKFcN4zmjYBxLa.root';
+$pass = 'Zg63zyU7tQ5sYFIS';
+$db   = 'Tiket_Harian';
 
-$host     = 'localhost';
-$db_name  = 'bromo_tracking';
-$username = 'root';
-$password = '';  // XAMPP default kosong. Kalau kamu set password MySQL, isi di sini.
+// Inisialisasi mysqli
+$koneksi = mysqli_init();
 
-try {
-    $pdo = new PDO(
-        "mysql:host=$host;dbname=$db_name;charset=utf8mb4",
-        $username,
-        $password
-    );
-    $pdo->setAttribute(PDO::ATTR_ERRMODE,       PDO::ERRMODE_EXCEPTION);
-    $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-} catch (PDOException $e) {
-    die("<b style='color:red'>Koneksi database gagal:</b> " . $e->getMessage());
+// Menambahkan pengaturan SSL (Wajib untuk TiDB Serverless)
+mysqli_ssl_set($koneksi, NULL, NULL, NULL, NULL, NULL);
+
+// Melakukan koneksi
+$real_connect = mysqli_real_connect(
+    $koneksi, 
+    $host, 
+    $user, 
+    $pass, 
+    $db, 
+    $port, 
+    NULL, 
+    MYSQLI_CLIENT_SSL
+);
+
+if (!$real_connect) {
+    die("Koneksi ke TiDB Cloud gagal: " . mysqli_connect_error());
 }
 ?>
