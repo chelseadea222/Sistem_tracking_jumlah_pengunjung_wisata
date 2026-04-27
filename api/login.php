@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once __DIR__ . '/proses_login.php';
+require_once '/proses_login.php';
 // kalau sudah login, langsung ke tiket harian
 ?>
 <!DOCTYPE html>
