@@ -1,5 +1,6 @@
 <?php
-require_once 'koneksi.php';
+session_start();
+require_once __DIR__ . '/koneksi.php';
 
 $error = '';
 
@@ -17,8 +18,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = 'Password minimal 6 karakter!';
     } else {
         // Cek apakah email sudah terdaftar
-        $stmt = $pdo->prepare("SELECT id FROM users WHERE email = ?");
-        $stmt->execute([$email]);
+        $stmt = $pdo->prepare("INSERT INTO users (nama, email, password) VALUES (?, ?, ?)");
+        $stmt->execute([$nama, $email, $password]);
         if ($stmt->fetch()) {
             $error = 'Email sudah digunakan!';
         } else {
