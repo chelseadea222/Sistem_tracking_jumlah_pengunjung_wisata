@@ -6,11 +6,11 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            background: url('https://i.pinimg.com/736x/d5/fa/66/d5fa660d2e02cb8b5f2c3e1489919426.jpg') center/cover fixed;
+            position: relative;
             margin: 0; 
             display: flex;
             flex-direction: column;
-            background: url('https://i.pinimg.com/736x/d5/fa/66/d5fa660d2e02cb8b5f2c3e1489919426.jpg') center/cover fixed;
-            position: relative;
         }
         body::before {
             content: '';
